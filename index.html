@@ -1,0 +1,44 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Prediction</title>
+    <style>
+        body { background-image:url('https://wallpapers.com/images/hd/marketing-business-success-tsuazom96tr1x45b.jpg');
+        background-size: cover;
+            background-position: center;
+            background-color: black;
+            background-attachment: fixed;
+         font-family: Arial, sans-serif; 
+         display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { background-color:rgb(4, 4, 4);max-width: 500px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; color: azure;}
+        input, button { width: 90%; padding: 10px; margin-top: 10px; }
+        h2 { text-align: center; }
+        .result { margin-top: 15px; color: #4CAF50; font-weight: bold; text-align: center; }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Sales Prediction for Items</h2>
+        <form action="/predict" method="post">
+            <label for="item_identifier">Item Identifier:</label>
+            <input type="text" id="item_identifier" name="item_identifier" placeholder="Enter Item Identifier (e.g., FDX3)" required>
+            
+            <label for="item_weight">Item Weight:</label>
+            <input type="number" id="item_weight" name="item_weight" placeholder="Enter Item Weight" required>
+            
+            <label for="item_mrp">Item MRP:</label>
+            <input type="number" id="item_mrp" name="item_mrp" placeholder="Enter Item MRP" required>
+            
+            <button type="submit">Predict Sales</button>
+        </form>
+        
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
